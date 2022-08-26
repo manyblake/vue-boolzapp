@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
 img {
   width: 100%;
   border-radius: 50%;
@@ -49,12 +55,16 @@ main::before {
   width: calc(100% / 3);
   background-color: beige;
   height: 100%;
+  border-right: 2px solid #d8dbd6;
+  display: flex;
+  flex-direction: column;
 }
 
 .messages {
   width: calc((100% / 3) * 2);
-  background-color: aqua;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .contacts__header,
@@ -62,9 +72,8 @@ main::before {
   background-color: #eaeaea;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem;
+  padding: 1rem;
   align-items: center;
-  flex-grow: 1;
 }
 
 .contacts__user-profile,
@@ -76,15 +85,100 @@ main::before {
 
 .contacts__user-profile-pic,
 .messages__user-profile-pic {
-  width: 2rem;
+  width: 2.5rem;
 }
 
 .contacts__header-icons i,
 .messages__header-icons i {
-  color: lightslategray;
+  color: #b1b1b1;
   display: inline-block;
   aspect-ratio: 1/1;
-  width: 20px;
+  width: 1.5rem;
   text-align: center;
-  line-height: 20px;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.contacts__notifications {
+  background-color: #8edafc;
+  padding: 1rem;
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  line-height: 1.2;
+}
+
+.contacts__notifications a {
+  color: #6b7376;
+}
+
+.contacts__notifications-icon i {
+  color: #8edafc;
+  display: inline-block;
+  aspect-ratio: 1/1;
+  width: 3.5rem;
+  text-align: center;
+  line-height: 3.5rem;
+  background-color: white;
+  border-radius: 50%;
+  font-size: normal;
+  font-size: 1.2rem;
+}
+
+.messages__body {
+  height: 100%;
+  background-image: url("../img/background-chat.png");
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.messages__footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #eaeaea;
+  padding: 1rem;
+  align-items: center;
+}
+
+.messages__footer i {
+  color: #6b7376;
+}
+
+.messages__write {
+  width: 80%;
+  border: none;
+  height: 2rem;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.contacts__findchat {
+  padding: 0.5rem;
+  display: flex;
+  gap: 2px;
+  background-color: #eaeaea;
+}
+
+.contacts__findchat-submit {
+  border: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: white;
+  height: 2.5rem;
+  padding: 0.5rem;
+}
+
+.contacts__findchat-input {
+  width: 100%;
+  border: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: white;
+  height: 2.5rem;
+  padding: 0.5rem;
+}
+
+.contacts__list {
+  overflow-y: scroll;
+  flex-grow: 1;
 }

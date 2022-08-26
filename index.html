@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
     <script
@@ -30,6 +36,29 @@
               <i class="fa-solid fa-ellipsis-vertical"></i>
             </div>
           </div>
+
+          <div class="contacts__notifications">
+            <div class="contacts__notifications-icon">
+              <i class="fa-solid fa-bell-slash"></i>
+            </div>
+            <div class="contacts__notifications-text">
+              <p>Ricevi notifiche di nuovi messaggi</p>
+              <a href="#">Attiva notifiche desktop</a>
+            </div>
+          </div>
+          <div class="contacts__findchat">
+            <input
+              class="contacts__findchat-submit"
+              type="submit"
+              value="trova"
+            />
+            <input
+              class="contacts__findchat-input"
+              type="text"
+              placeholder="Cerca o inizia una nuova chat"
+            />
+          </div>
+          <div class="contacts__list"></div>
         </div>
         <div class="messages">
           <div class="messages__header">
@@ -45,6 +74,18 @@
               <i class="fa-solid fa-paperclip"></i>
               <i class="fa-solid fa-ellipsis-vertical"></i>
             </div>
+          </div>
+
+          <div class="messages__body"></div>
+
+          <div class="messages__footer">
+            <i class="fa-regular fa-face-smile"></i>
+            <input
+              class="messages__write"
+              type="text"
+              placeholder="Scrivi un messaggio"
+            />
+            <i class="fa-solid fa-microphone"></i>
           </div>
         </div>
       </div>

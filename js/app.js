@@ -1,4 +1,4 @@
-contacts: [
+const contacts = [
   {
     name: "Michele",
     avatar: "_1",

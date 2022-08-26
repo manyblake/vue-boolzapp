@@ -16,6 +16,10 @@ img {
   aspect-ratio: 1/1;
 }
 
+ul {
+  list-style-type: none;
+}
+
 body {
   height: 100vh;
   display: flex;
@@ -53,7 +57,7 @@ main::before {
 
 .contacts {
   width: calc(100% / 3);
-  background-color: beige;
+  background-color: #eaeaea;
   height: 100%;
   border-right: 2px solid #d8dbd6;
   display: flex;
@@ -84,8 +88,9 @@ main::before {
 }
 
 .contacts__user-profile-pic,
-.messages__user-profile-pic {
-  width: 2.5rem;
+.messages__user-profile-pic,
+.contacts__contact-picture-box {
+  width: 3rem;
 }
 
 .contacts__header-icons i,
@@ -165,7 +170,8 @@ main::before {
   border-bottom-left-radius: 4px;
   background-color: white;
   height: 2.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 2.5rem;
+  color: #b1b1b1;
 }
 
 .contacts__findchat-input {
@@ -181,4 +187,14 @@ main::before {
 .contacts__list {
   overflow-y: scroll;
   flex-grow: 1;
+}
+
+.contacts__contact {
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contacts__contact-message-time {
+  margin-left: auto;
 }

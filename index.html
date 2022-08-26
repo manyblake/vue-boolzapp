@@ -47,18 +47,46 @@
             </div>
           </div>
           <div class="contacts__findchat">
-            <input
-              class="contacts__findchat-submit"
-              type="submit"
-              value="trova"
-            />
+            <button class="contacts__findchat-submit" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
             <input
               class="contacts__findchat-input"
               type="text"
               placeholder="Cerca o inizia una nuova chat"
             />
           </div>
-          <div class="contacts__list"></div>
+
+          <ul class="contacts__list">
+            <li v-for="contact in contacts" class="contacts__contact">
+              <div class="contacts__contact-picture-box">
+                <img :src="'img/avatar' + contact.avatar + '.jpg'" />
+              </div>
+
+              <div class="contacts__contact-text">
+                <h3 class="contacts__contact-name">{{contact.name}}</h3>
+
+                <template v-for="(message, i) in contact.messages">
+                  <p
+                    v-if="i === contact.messages.length - 1"
+                    class="contacts__contact-message-preview"
+                  >
+                    {{ message.message }}
+                  </p>
+                </template>
+              </div>
+
+              <template v-for="(message, i) in contact.messages">
+                <p
+                  v-if="i === contact.messages.length - 1"
+                  class="contacts__contact-message-time"
+                >
+                  {{ message.date.slice(11, 16) }}
+                </p>
+              </template>
+            </li>
+          </ul>
         </div>
         <div class="messages">
           <div class="messages__header">

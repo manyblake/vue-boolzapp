@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  position: relative;
+  background-color: #d8dbd6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+main::before {
+  background-color: #009688;
+  height: 15%;
+  display: inline-block;
+  content: "";
+  right: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.main-content {
+  width: 80%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+}
+
+.contacts {
+  width: calc(100% / 3);
+  background-color: beige;
+  height: 100%;
+}
+
+.messages {
+  width: calc((100% / 3) * 2);
+  background-color: aqua;
+  height: 100%;
+}
+
+.contacts__header,
+.messages__header {
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.contacts__user-profile,
+.messages__user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.contacts__user-profile-pic,
+.messages__user-profile-pic {
+  width: 2rem;
+}
+
+.contacts__header-icons i,
+.messages__header-icons i {
+  color: lightslategray;
+  display: inline-block;
+  aspect-ratio: 1/1;
+  width: 20px;
+  text-align: center;
+  line-height: 20px;
+}

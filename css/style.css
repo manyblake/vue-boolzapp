@@ -194,6 +194,12 @@ main::before {
   padding: 0.5rem;
   display: flex;
   gap: 0.5rem;
+  cursor: pointer;
+}
+
+.contacts__contact.active,
+.contacts__contact:hover {
+  background-color: #eaeaea;
 }
 
 .contacts__contact:not(:first-child) {

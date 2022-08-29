@@ -62,6 +62,7 @@
             <li
               v-for="(contact, i) in contacts"
               class="contacts__contact"
+              :class="[i === currentIndex ? 'active' : '']"
               @click="currentIndex = i"
             >
               <div class="contacts__contact-picture-box">
@@ -96,9 +97,13 @@
           <div class="messages__header">
             <div class="messages__user-profile">
               <div class="messages__user-profile-pic">
-                <img src="https://picsum.photos/200/300?grayscale" />
+                <img
+                  :src="'img/avatar' + contacts[currentIndex].avatar + '.jpg'"
+                />
               </div>
-              <p class="messages__user-profile-name">Sofia</p>
+              <p class="messages__user-profile-name">
+                {{ contacts[currentIndex].name }}
+              </p>
             </div>
 
             <div class="messages__header-icons">

@@ -56,8 +56,8 @@ main::before {
 }
 
 .contacts {
-  width: calc(100% / 3);
-  background-color: #eaeaea;
+  flex-basis: 400px;
+  background-color: white;
   height: 100%;
   border-right: 2px solid #d8dbd6;
   display: flex;
@@ -65,7 +65,7 @@ main::before {
 }
 
 .messages {
-  width: calc((100% / 3) * 2);
+  flex-grow: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -94,7 +94,8 @@ main::before {
 }
 
 .contacts__header-icons i,
-.messages__header-icons i {
+.messages__header-icons i,
+.messages__footer i {
   color: #b1b1b1;
   display: inline-block;
   aspect-ratio: 1/1;
@@ -195,6 +196,48 @@ main::before {
   gap: 0.5rem;
 }
 
+.contacts__contact:not(:first-child) {
+  border-top: 2px solid #eaeaea;
+}
+
 .contacts__contact-message-time {
   margin-left: auto;
+}
+
+.contacts__contact-name {
+  font-weight: 400;
+}
+
+.contacts__contact-message-preview {
+  color: #6b7376;
+}
+
+.messages__body-container {
+  width: 700px;
+  max-width: 700px;
+  margin: 50px auto 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.messages__message {
+  padding: 10px 5px 5px 10px;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.messages__message.sent {
+  background-color: #d5f9ba;
+  align-self: flex-end;
+}
+
+.messages__message.received {
+  background-color: white;
+}
+
+.messages__message-time {
+  font-size: 8px;
+  text-align: end;
 }

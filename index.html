@@ -25,7 +25,7 @@
           <div class="contacts__header">
             <div class="contacts__user-profile">
               <div class="contacts__user-profile-pic">
-                <img src="https://picsum.photos/200/300?grayscale" />
+                <img src="./img/avatar_io.jpg" />
               </div>
               <p class="contacts__user-profile-name">Sofia</p>
             </div>
@@ -59,7 +59,11 @@
           </div>
 
           <ul class="contacts__list">
-            <li v-for="contact in contacts" class="contacts__contact">
+            <li
+              v-for="(contact, i) in contacts"
+              class="contacts__contact"
+              @click="currentIndex = i"
+            >
               <div class="contacts__contact-picture-box">
                 <img :src="'img/avatar' + contact.avatar + '.jpg'" />
               </div>
@@ -104,7 +108,20 @@
             </div>
           </div>
 
-          <div class="messages__body"></div>
+          <div class="messages__body">
+            <ul class="messages__body-container">
+              <li
+                class="messages__message"
+                v-for="(message, i) in currentContact"
+                :class="[message.status === 'sent' ? 'sent' : 'received']"
+              >
+                <p class="messages__message-text">{{ message.message }}</p>
+                <p class="messages__message-time">
+                  {{ message.date.slice(11, 16) }}
+                </p>
+              </li>
+            </ul>
+          </div>
 
           <div class="messages__footer">
             <i class="fa-regular fa-face-smile"></i>

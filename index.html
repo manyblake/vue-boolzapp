@@ -134,6 +134,8 @@
               class="messages__write"
               type="text"
               placeholder="Scrivi un messaggio"
+              @keyup.enter="addNewMessage"
+              v-model="newMessage"
             />
             <i class="fa-solid fa-microphone"></i>
           </div>

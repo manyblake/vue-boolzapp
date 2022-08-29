@@ -166,11 +166,53 @@ const app = new Vue({
   el: "#root",
   data: {
     currentIndex: 0,
+    newMessage: "",
     contacts: contacts,
   },
   computed: {
     currentContact: function () {
       return this.contacts[this.currentIndex].messages;
+    },
+  },
+  methods: {
+    addNewMessage() {
+      this.newMessage = this.newMessage.trim();
+
+      if (!this.newMessage) return;
+
+      this.contacts[this.currentIndex].messages.push({
+        message: this.newMessage,
+        date: this.getNewDate(),
+        status: "sent",
+      });
+
+      setTimeout(() => {
+        this.newMessage = "ok";
+        this.contacts[this.currentIndex].messages.push({
+          message: this.newMessage,
+          date: this.getNewDate(),
+          status: "received",
+        });
+      }, 1000);
+
+      this.newMessage = "";
+    },
+    getNewDate() {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      let mm = today.getMonth() + 1;
+      let dd = today.getDate();
+      let hours = today.getHours();
+      let minutes = today.getMinutes();
+
+      if (dd < 10) dd = "0" + dd;
+      if (mm < 10) mm = "0" + mm;
+      if (hours < 10) hours = "0" + hours;
+      if (minutes < 10) minutes = "0" + minutes;
+
+      let formattedToday = `${dd}/${mm}/${yyyy} ${hours}:${minutes}`;
+
+      return formattedToday;
     },
   },
 });

@@ -55,12 +55,13 @@
               class="contacts__findchat-input"
               type="text"
               placeholder="Cerca o inizia una nuova chat"
+              v-model="findContact"
             />
           </div>
 
           <ul class="contacts__list">
             <li
-              v-for="(contact, i) in contacts"
+              v-for="(contact, i) in filteredContacts"
               class="contacts__contact"
               :class="[i === currentIndex ? 'active' : '']"
               @click="currentIndex = i"

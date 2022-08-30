@@ -219,6 +219,7 @@ const app = new Vue({
 
     deleteMessage(i) {
       this.currentContact.messages.splice(i, 1);
+      this.isToolboxActive = false;
     },
 
     toggleToolbox() {
@@ -247,14 +248,23 @@ const app = new Vue({
   },
 
   mounted() {
-    console.log(this.contacts);
     this.contacts.sort(function (a, b) {
-      const dateA = new Date(a.messages[this.messages - 1].date);
-      const millisecondsA = dateA.getTime;
+      const dateA = a.messages[a.messages.length - 1].date;
+      const dA = dateA.slice(0, 2),
+        mA = dateA.slice(3, 5),
+        yA = dateA.slice(6, 10);
 
-      const dateB = new Date(b.messages[this.messages - 1].date);
-      const millisecondsB = dateB.getTime;
-      console.log(this.contacts);
+      const dateMDYa = new Date(mA, dA, yA);
+      const millisecondsA = dateMDYa.getTime();
+
+      const dateB = b.messages[b.messages.length - 1].date;
+      const dB = dateB.slice(0, 2),
+        mB = dateB.slice(3, 5),
+        yB = dateB.slice(6, 10);
+
+      const dateMDYb = new Date(mB, dB, yB);
+      const millisecondsB = dateMDYb.getTime();
+
       return millisecondsA - millisecondsB;
     });
   },

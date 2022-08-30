@@ -246,14 +246,15 @@ const app = new Vue({
     },
   },
 
-  created() {
-    this.filteredContacts.sort(function (a, b) {
-      const dateA = new Date(a.date);
+  mounted() {
+    console.log(this.contacts);
+    this.contacts.sort(function (a, b) {
+      const dateA = new Date(a.messages[this.messages - 1].date);
       const millisecondsA = dateA.getTime;
 
-      const dateB = new Date(b.date);
+      const dateB = new Date(b.messages[this.messages - 1].date);
       const millisecondsB = dateB.getTime;
-
+      console.log(this.contacts);
       return millisecondsA - millisecondsB;
     });
   },

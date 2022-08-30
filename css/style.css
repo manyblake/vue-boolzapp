@@ -209,6 +209,9 @@ main::before {
 
 .contacts__contact-message-time {
   margin-left: auto;
+  font-size: 8px;
+  min-width: 80px;
+  text-align: center;
 }
 
 .contacts__contact-name {

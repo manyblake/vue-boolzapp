@@ -210,13 +210,19 @@ const app = new Vue({
       }, 2000);
     },
 
+    dateToMilliseconds() {
+      const time = new Date(
+        this.currentContact.messages[messages.length - 1].date
+      );
+      return time;
+    },
+
     deleteMessage(i) {
       this.currentContact.messages.splice(i, 1);
     },
 
     toggleToolbox() {
       this.isToolboxActive = !this.isToolboxActive;
-      console.log(this.isToolboxActive);
     },
 
     getNewDate() {
@@ -238,5 +244,17 @@ const app = new Vue({
 
       return formattedToday;
     },
+  },
+
+  created() {
+    this.filteredContacts.sort(function (a, b) {
+      const dateA = new Date(a.date);
+      const millisecondsA = dateA.getTime;
+
+      const dateB = new Date(b.date);
+      const millisecondsB = dateB.getTime;
+
+      return millisecondsA - millisecondsB;
+    });
   },
 });

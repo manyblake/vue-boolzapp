@@ -95,7 +95,8 @@ main::before {
 
 .contacts__header-icons i,
 .messages__header-icons i,
-.messages__footer i {
+.messages__footer i,
+.messages__message-toolbox i {
   color: #b1b1b1;
   display: inline-block;
   aspect-ratio: 1/1;
@@ -232,6 +233,7 @@ main::before {
   padding: 10px 5px 5px 10px;
   border-radius: 4px;
   width: 250px;
+  position: relative;
 }
 
 .messages__message.sent {
@@ -246,4 +248,32 @@ main::before {
 .messages__message-time {
   font-size: 8px;
   text-align: end;
+}
+
+.messages__message-toolbox {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+
+.messages__message:hover .messages__message-toolbox {
+  display: block;
+}
+
+.messages__message-toolbox-button {
+  display: none;
+  border: none;
+  background-color: white;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 2px black;
+  position: absolute;
+  top: 16px;
+  right: 8px;
+  white-space: nowrap;
+}
+
+.messages__message-toolbox-button.active {
+  display: block;
 }

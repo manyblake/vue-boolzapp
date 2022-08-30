@@ -55,7 +55,7 @@
               class="contacts__findchat-input"
               type="text"
               placeholder="Cerca o inizia una nuova chat"
-              v-model="findContact"
+              v-model="contactToFind"
             />
           </div>
 
@@ -67,7 +67,7 @@
               @click="currentIndex = i"
             >
               <div class="contacts__contact-picture-box">
-                <img :src="'img/avatar' + contact.avatar + '.jpg'" />
+                <img :src=`img/avatar${contact.avatar}.jpg` />
               </div>
 
               <div class="contacts__contact-text">
@@ -98,9 +98,7 @@
           <div class="messages__header">
             <div class="messages__user-profile">
               <div class="messages__user-profile-pic">
-                <img
-                  :src="'img/avatar' + contacts[currentIndex].avatar + '.jpg'"
-                />
+                <img :src=`img/avatar${currentContact.avatar}.jpg` />
               </div>
               <p class="messages__user-profile-name">
                 {{ contacts[currentIndex].name }}
@@ -118,13 +116,28 @@
             <ul class="messages__body-container">
               <li
                 class="messages__message"
-                v-for="(message, i) in currentContact"
+                v-for="(message, i) in currentContact.messages"
                 :class="[message.status === 'sent' ? 'sent' : 'received']"
               >
                 <p class="messages__message-text">{{ message.message }}</p>
                 <p class="messages__message-time">
                   {{ message.date.slice(11, 16) }}
                 </p>
+
+                <div class="messages__message-toolbox">
+                  <i
+                    class="fa-solid fa-chevron-down"
+                    @click="toggleToolbox"
+                  ></i>
+
+                  <button
+                    class="messages__message-toolbox-button"
+                    :class="[isToolboxActive ? 'active' : '']"
+                    @click="deleteMessage(i)"
+                  >
+                    Delete message
+                  </button>
+                </div>
               </li>
             </ul>
           </div>

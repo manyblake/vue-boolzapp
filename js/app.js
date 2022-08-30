@@ -168,16 +168,19 @@ const app = new Vue({
     currentIndex: 0,
     newMessage: ``,
     contacts: contacts,
-    findContact: ``,
+    contactToFind: ``,
+    isToolboxActive: false,
   },
   computed: {
     currentContact: function () {
-      return this.contacts[this.currentIndex].messages;
+      return this.contacts[this.currentIndex];
     },
 
     filteredContacts: function () {
       return this.contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(this.findContact.toLowerCase())
+        contact.name
+          .toLowerCase()
+          .includes(this.contactToFind.toLowerCase().trim())
       );
     },
   },
@@ -187,7 +190,9 @@ const app = new Vue({
 
       if (!this.newMessage) return;
 
-      this.contacts[this.currentIndex].messages.push({
+      const actualUserMessages = this.currentContact.messages;
+
+      actualUserMessages.push({
         message: this.newMessage,
         date: this.getNewDate(),
         status: `sent`,
@@ -196,13 +201,22 @@ const app = new Vue({
 
       setTimeout(() => {
         this.newMessage = `ok`;
-        this.contacts[this.currentIndex].messages.push({
+        actualUserMessages.push({
           message: this.newMessage,
           date: this.getNewDate(),
           status: `received`,
         });
         this.newMessage = ``;
-      }, 1000);
+      }, 2000);
+    },
+
+    deleteMessage(i) {
+      this.currentContact.messages.splice(i, 1);
+    },
+
+    toggleToolbox() {
+      this.isToolboxActive = !this.isToolboxActive;
+      console.log(this.isToolboxActive);
     },
 
     getNewDate() {
@@ -212,13 +226,15 @@ const app = new Vue({
       let dd = today.getDate();
       let hours = today.getHours();
       let minutes = today.getMinutes();
+      let seconds = today.getSeconds();
 
       if (dd < 10) dd = `0` + dd;
       if (mm < 10) mm = `0` + mm;
       if (hours < 10) hours = `0` + hours;
       if (minutes < 10) minutes = `0` + minutes;
+      if (seconds < 10) seconds = `0` + seconds;
 
-      let formattedToday = `${dd}/${mm}/${yyyy} ${hours}:${minutes}`;
+      let formattedToday = `${dd}/${mm}/${yyyy} ${hours}:${minutes}:${seconds}`;
 
       return formattedToday;
     },

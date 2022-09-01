@@ -183,9 +183,8 @@ const app = new Vue({
           .includes(this.contactToFind.toLowerCase().trim())
       );
     },
-
-    sortedContacts: function () {},
   },
+
   methods: {
     addNewMessage() {
       this.newMessage = this.newMessage.trim();
@@ -210,6 +209,40 @@ const app = new Vue({
         });
         this.newMessage = ``;
       }, 2000);
+
+      this.sortContacts();
+    },
+
+    sortContacts() {
+      this.contacts.sort(function (a, b) {
+        const dateA = a.messages[a.messages.length - 1].date;
+        const dA = dateA.slice(0, 2),
+          mA = dateA.slice(3, 5),
+          yA = dateA.slice(6, 10),
+          hA = dateA.slice(11, 13),
+          msA = dateA.slice(14, 16),
+          sA = dateA.slice(17, 19);
+
+        const dateStringA = `${mA}/${dA}/${yA} ${hA}:${msA}:${sA}`;
+        const dateMDYa = new Date(dateStringA);
+
+        const millisecondsA = dateMDYa.getTime();
+
+        const dateB = b.messages[b.messages.length - 1].date;
+        const dB = dateB.slice(0, 2),
+          mB = dateB.slice(3, 5),
+          yB = dateB.slice(6, 10),
+          hB = dateB.slice(11, 13),
+          msB = dateB.slice(14, 16),
+          sB = dateB.slice(17, 19);
+
+        const dateStringB = `${mB}/${dB}/${yB} ${hB}:${msB}:${sB}`;
+        const dateMDYb = new Date(dateStringB);
+
+        const millisecondsB = dateMDYb.getTime();
+
+        return millisecondsB - millisecondsA;
+      });
     },
 
     dateToMilliseconds() {
@@ -250,34 +283,6 @@ const app = new Vue({
   },
 
   mounted() {
-    this.contacts.sort(function (a, b) {
-      const dateA = a.messages[a.messages.length - 1].date;
-      const dA = dateA.slice(0, 2),
-        mA = dateA.slice(3, 5),
-        yA = dateA.slice(6, 10),
-        hA = dateA.slice(11, 13),
-        msA = dateA.slice(14, 16),
-        sA = dateA.slice(17, 19);
-
-      const dateStringA = `${mA}/${dA}/${yA} ${hA}:${msA}:${sA}`;
-      const dateMDYa = new Date(dateStringA);
-
-      const millisecondsA = dateMDYa.getTime();
-
-      const dateB = b.messages[b.messages.length - 1].date;
-      const dB = dateB.slice(0, 2),
-        mB = dateB.slice(3, 5),
-        yB = dateB.slice(6, 10),
-        hB = dateB.slice(11, 13),
-        msB = dateB.slice(14, 16),
-        sB = dateB.slice(17, 19);
-
-      const dateStringB = `${mB}/${dB}/${yB} ${hB}:${msB}:${sB}`;
-      const dateMDYb = new Date(dateStringB);
-
-      const millisecondsB = dateMDYb.getTime();
-
-      return millisecondsB - millisecondsA;
-    });
+    this.sortContacts();
   },
 });
